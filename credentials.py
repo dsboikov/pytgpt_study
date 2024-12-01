@@ -15,7 +15,8 @@ class Keys:
         self.check_update_giga_oauth_expire()
 
     # Получение ключа аутентификации для GigaChat
-    def get_giga_oauth(self, token, uid):
+    @staticmethod
+    def get_giga_oauth(token, uid):
         url = 'https://ngw.devices.sberbank.ru:9443/api/v2/oauth'
 
         payload = {
