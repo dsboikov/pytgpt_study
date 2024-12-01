@@ -1,5 +1,6 @@
 from openai import OpenAI
 from httpx import Client
+from credentials import Keys
 
 
 class ChatGptService:
@@ -7,10 +8,10 @@ class ChatGptService:
     message_list: list = None
 
     def __init__(self, token):
-        token = "sk-proj-" + token[:3:-1] if token.startswith('gpt:') else token
+        obKeys = Keys()
         self.client = OpenAI(
             http_client=Client(proxies="http://18.199.183.77:49232"),
-            api_key=token)
+            api_key=obKeys.gpt_token)
         self.message_list = []
 
     async def send_message_list(self) -> str:
